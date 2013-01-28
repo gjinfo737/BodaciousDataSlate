@@ -1,5 +1,6 @@
 package northwoods.discovery.bodaciousdataslate.tests.unit.radius;
 
+import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_ITEM_BODACIOUS;
 import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_ITEM_CONTAINER_ID;
 import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_LAYOUTS;
 import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_LAYOUT_ITEM_IDS;
@@ -33,9 +34,9 @@ public class BodaciousRadiusMaximusTests {
 		activity = new Activity();
 
 		this.bodaciousRadiusMaximus = new BodaciousRadiusMaximus<String>(
-				activity, RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS,
+				RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS,
 				activity.getLayoutInflater(), mainLayout,
-				RADIUS_ITEM_CONTAINER_ID, null);
+				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS, null);
 
 	}
 

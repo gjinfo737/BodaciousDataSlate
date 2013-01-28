@@ -42,7 +42,7 @@ public class BodaciousRadiusMaximus<E> {
 
 	private void updateView() {
 		this.currentLayout = determineAppropriateLayout();
-		// mainLayout.removeAllViews();
+		mainLayout.removeAllViews();
 		ViewGroup newLayout = (ViewGroup) layoutInflater.inflate(currentLayout,
 				null);
 		ViewGroup subLayout = (ViewGroup) newLayout
@@ -55,7 +55,7 @@ public class BodaciousRadiusMaximus<E> {
 	private void populateItems() {
 		int count = adapter.getCount();
 		for (int i = 0; i < count; i++) {
-			if (i < layoutsItemIds.length) {
+			if (i < count - 1 && i < layoutsItemIds.length) {
 				ViewGroup viewGroup = (ViewGroup) mainLayout
 						.findViewById(layoutsItemIds[i]);
 				if (viewGroup != null) {

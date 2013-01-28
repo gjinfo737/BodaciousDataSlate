@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 public class MainActivity extends Activity {
 
-	private static final int RADIUS_ITEM_BODACIOUS = id.bod_radius_item_bodacious;
+	public static final int RADIUS_ITEM_BODACIOUS = id.bod_radius_item_bodacious;
 	public static final int RADIUS_SUB_LAYOUT_ID = id.sub_rellay;
 	public static final int RADIUS_ITEM_CONTAINER_ID = id.bod_radius_item_container;
 	public static final int[] RADIUS_LAYOUTS = new int[] { layout.bod_radius_0,
