@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RadiusItemPopulater implements IRadiusItemusPopulus {
+public class RadiusItemusPopulus_IconTitleSubTitle implements IRadiusItemusPopulus {
 
 	private int layoutId;
 	private int iconId;
 	private int titleId;
 	private int subTitleId;
 
-	public RadiusItemPopulater(int layoutId, int iconId, int titleId,
+	public RadiusItemusPopulus_IconTitleSubTitle(int layoutId, int iconId, int titleId,
 			int subTitleId) {
 		this.layoutId = layoutId;
 		this.iconId = iconId;

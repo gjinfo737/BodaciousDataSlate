@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 public class MainActivity extends Activity {
 
+	private static final int RADIUS_ITEM_BODACIOUS = id.bod_radius_item_bodacious;
 	public static final int RADIUS_SUB_LAYOUT_ID = id.sub_rellay;
 	public static final int RADIUS_ITEM_CONTAINER_ID = id.bod_radius_item_container;
 	public static final int[] RADIUS_LAYOUTS = new int[] { layout.bod_radius_0,
@@ -29,17 +30,18 @@ public class MainActivity extends Activity {
 		BodaciousAdapter<String> bodaciousStringAdapter = new BodaciousAdapter<String>(
 				getApplicationContext());
 		List<String> list = new ArrayList<String>();
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 			list.add("~" + i);
-		bodaciousStringAdapter.setList(list, 1);
+		bodaciousStringAdapter.setList(list, 0);
 
+		RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
+				layout.item_layout, id.item_imageView, id.item_textView_title,
+				id.item_textView_subTitle);
 		BodaciousRadiusMaximus<String> radial = new BodaciousRadiusMaximus<String>(
-				getApplicationContext(), RADIUS_LAYOUTS,
-				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
+				RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
-				RADIUS_ITEM_CONTAINER_ID, new RadiusItemPopulater(
-						layout.item_layout, id.item_imageView,
-						id.item_textView_title, id.item_textView_subTitle));
+				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
+				radiusItemPopulater);
 
 		radial.setAdapter(bodaciousStringAdapter);
 

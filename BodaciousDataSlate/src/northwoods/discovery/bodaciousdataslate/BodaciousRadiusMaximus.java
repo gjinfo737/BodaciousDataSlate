@@ -1,14 +1,13 @@
 package northwoods.discovery.bodaciousdataslate;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 public class BodaciousRadiusMaximus<E> {
 
-	private Context context;
 	private int[] layouts;
 	private int[] layoutsItemIds;
+	private int bodaciousItemId;
 	private LayoutInflater layoutInflater;
 	private ViewGroup mainLayout;
 	private BodaciousAdapter<E> adapter;
@@ -16,17 +15,18 @@ public class BodaciousRadiusMaximus<E> {
 	private int itemContainerLayoutId;
 	private IRadiusItemusPopulus radiusItemusPopulus;
 
-	public BodaciousRadiusMaximus(Context context, int[] layouts,
-			int[] layoutsItemIds, LayoutInflater layoutInflater,
-			ViewGroup mainLayout, int itemContainerLayoutId,
+	public BodaciousRadiusMaximus(int[] layouts, int[] layoutsItemIds,
+			LayoutInflater layoutInflater, ViewGroup mainLayout,
+			int itemContainerLayoutId, int bodaciousItemId,
 			IRadiusItemusPopulus radiusItemusPopulus) {
-		this.context = context;
+
 		this.layouts = layouts;
 		this.layoutsItemIds = layoutsItemIds;
 		this.layoutInflater = layoutInflater;
 		this.mainLayout = mainLayout;
 		this.itemContainerLayoutId = itemContainerLayoutId;
 		this.radiusItemusPopulus = radiusItemusPopulus;
+		this.bodaciousItemId = bodaciousItemId;
 		//
 		this.currentLayout = this.layouts[0];
 	}
@@ -36,9 +36,13 @@ public class BodaciousRadiusMaximus<E> {
 		updateView();
 	}
 
+	public BodaciousAdapter<E> getAdapter() {
+		return adapter;
+	}
+
 	private void updateView() {
-		this.currentLayout = determineAppropriateLayout(adapter);
-		mainLayout.removeAllViews();
+		this.currentLayout = determineAppropriateLayout();
+		// mainLayout.removeAllViews();
 		ViewGroup newLayout = (ViewGroup) layoutInflater.inflate(currentLayout,
 				null);
 		ViewGroup subLayout = (ViewGroup) newLayout
@@ -49,12 +53,25 @@ public class BodaciousRadiusMaximus<E> {
 	}
 
 	private void populateItems() {
-		int count = calculateNumberOfItemsIndex(adapter) + 1;
+		int count = adapter.getCount();
 		for (int i = 0; i < count; i++) {
-			radiusItemusPopulus.setViewForData(layoutInflater,
-					(ViewGroup) mainLayout.findViewById(layoutsItemIds[i]),
-					adapter.getItem(i));
+			if (i < layoutsItemIds.length) {
+				ViewGroup viewGroup = (ViewGroup) mainLayout
+						.findViewById(layoutsItemIds[i]);
+				if (viewGroup != null) {
+					radiusItemusPopulus.setViewForData(layoutInflater,
+							viewGroup, adapter.getItem(i));
+				}
+			} else {
+				radiusItemusPopulus.setViewForData(layoutInflater,
+						(ViewGroup) mainLayout.findViewById(bodaciousItemId),
+						adapter.getItem(i));
+			}
 		}
+	}
+
+	private int determineAppropriateLayout() {
+		return determineAppropriateLayout(adapter);
 	}
 
 	public int determineAppropriateLayout(
