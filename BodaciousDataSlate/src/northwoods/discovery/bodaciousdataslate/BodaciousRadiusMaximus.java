@@ -13,17 +13,20 @@ public class BodaciousRadiusMaximus<E> {
 	private ViewGroup mainLayout;
 	private BodaciousAdapter<E> adapter;
 	private int currentLayout;
-	private int subLayoutId;
+	private int itemContainerLayoutId;
+	private IRadiusItemusPopulus radiusItemusPopulus;
 
 	public BodaciousRadiusMaximus(Context context, int[] layouts,
 			int[] layoutsItemIds, LayoutInflater layoutInflater,
-			ViewGroup mainLayout, int containerLayoutId) {
+			ViewGroup mainLayout, int itemContainerLayoutId,
+			IRadiusItemusPopulus radiusItemusPopulus) {
 		this.context = context;
 		this.layouts = layouts;
 		this.layoutsItemIds = layoutsItemIds;
 		this.layoutInflater = layoutInflater;
 		this.mainLayout = mainLayout;
-		this.subLayoutId = containerLayoutId;
+		this.itemContainerLayoutId = itemContainerLayoutId;
+		this.radiusItemusPopulus = radiusItemusPopulus;
 		//
 		this.currentLayout = this.layouts[0];
 	}
@@ -34,18 +37,39 @@ public class BodaciousRadiusMaximus<E> {
 	}
 
 	private void updateView() {
-		determineAppropriateLayout();
+		this.currentLayout = determineAppropriateLayout(adapter);
 		mainLayout.removeAllViews();
-		ViewGroup layout = (ViewGroup) layoutInflater.inflate(currentLayout,
+		ViewGroup newLayout = (ViewGroup) layoutInflater.inflate(currentLayout,
 				null);
-		ViewGroup subLayout = (ViewGroup) layout.findViewById(subLayoutId);
-		layout.removeView(subLayout);
+		ViewGroup subLayout = (ViewGroup) newLayout
+				.findViewById(itemContainerLayoutId);
+		newLayout.removeView(subLayout);
 		mainLayout.addView(subLayout);
+		populateItems();
 	}
 
-	private void determineAppropriateLayout() {
-		int index = adapter.getCount();
-		this.currentLayout = layouts[index];
+	private void populateItems() {
+		int count = calculateNumberOfItemsIndex(adapter) + 1;
+		for (int i = 0; i < count; i++) {
+			radiusItemusPopulus.setViewForData(layoutInflater,
+					(ViewGroup) mainLayout.findViewById(layoutsItemIds[i]),
+					adapter.getItem(i));
+		}
+	}
+
+	public int determineAppropriateLayout(
+			BodaciousAdapter<E> bodaciousStringAdapter) {
+		int index = calculateNumberOfItemsIndex(bodaciousStringAdapter);
+		return layouts[index];
+	}
+
+	public int calculateNumberOfItemsIndex(
+			BodaciousAdapter<E> bodaciousStringAdapter) {
+		int indexWithBod = bodaciousStringAdapter.getCount() - 1;
+		int index = indexWithBod - 1;
+		index = index >= layouts.length ? layouts.length - 1 : index;
+		index = index < 0 ? 0 : index;
+		return index;
 	}
 
 }
