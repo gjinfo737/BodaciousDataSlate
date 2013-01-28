@@ -16,11 +16,11 @@
             android:layout_centerInParent="true" >
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
-                android:id="@+id/bod_radius_item_0"
+                android:id="@+id/bod_radius_item_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="50dp" >
+                android:layout_marginRight="200dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
@@ -28,15 +28,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="50dp" >
+                android:layout_marginLeft="100dp"
+                android:paddingBottom="200dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
-                android:id="@+id/bod_radius_item_2"
+                android:id="@+id/bod_radius_item_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="50dp" >
+                android:layout_marginLeft="200dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
@@ -44,7 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="50dp" >
+                android:layout_marginLeft="100dp"
+                android:paddingTop="200dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
         </RelativeLayout>
 

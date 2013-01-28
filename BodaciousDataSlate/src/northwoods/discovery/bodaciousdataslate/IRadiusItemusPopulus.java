@@ -5,6 +5,6 @@ import android.view.ViewGroup;
 
 public interface IRadiusItemusPopulus {
 
-	public void setViewForData(LayoutInflater inflater, ViewGroup view,
+	public ViewGroup setViewForData(LayoutInflater inflater, ViewGroup view,
 			Object data);
 }

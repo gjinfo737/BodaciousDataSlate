@@ -2,6 +2,7 @@ package northwoods.discovery.bodaciousdataslate;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 public class BodaciousRadiusMaximus<E> {
 
@@ -19,11 +20,11 @@ public class BodaciousRadiusMaximus<E> {
 			LayoutInflater layoutInflater, ViewGroup mainLayout,
 			int itemContainerLayoutId, int bodaciousItemId,
 			IRadiusItemusPopulus radiusItemusPopulus) {
-
 		this.layouts = layouts;
 		this.layoutsItemIds = layoutsItemIds;
 		this.layoutInflater = layoutInflater;
 		this.mainLayout = mainLayout;
+
 		this.itemContainerLayoutId = itemContainerLayoutId;
 		this.radiusItemusPopulus = radiusItemusPopulus;
 		this.bodaciousItemId = bodaciousItemId;
@@ -49,6 +50,7 @@ public class BodaciousRadiusMaximus<E> {
 				.findViewById(itemContainerLayoutId);
 		newLayout.removeView(subLayout);
 		mainLayout.addView(subLayout);
+
 		populateItems();
 	}
 
@@ -56,11 +58,15 @@ public class BodaciousRadiusMaximus<E> {
 		int count = adapter.getCount();
 		for (int i = 0; i < count; i++) {
 			if (i < count - 1 && i < layoutsItemIds.length) {
-				ViewGroup viewGroup = (ViewGroup) mainLayout
+				RelativeLayout viewGroup = (RelativeLayout) mainLayout
 						.findViewById(layoutsItemIds[i]);
+
 				if (viewGroup != null) {
-					radiusItemusPopulus.setViewForData(layoutInflater,
-							viewGroup, adapter.getItem(i));
+					ViewGroup item = radiusItemusPopulus.setViewForData(
+							layoutInflater, viewGroup, adapter.getItem(i));
+					// if (i >= count) {
+					// calculateAndPlaceItems(viewGroup);
+					// }
 				}
 			} else {
 				radiusItemusPopulus.setViewForData(layoutInflater,
@@ -69,6 +75,17 @@ public class BodaciousRadiusMaximus<E> {
 			}
 		}
 	}
+
+	// public void calculateAndPlaceItems(RelativeLayout viewGroup) {
+	// viewGroup.setLayoutParams(new RelativeLayout.LayoutParams(
+	// RelativeLayout.LayoutParams.MATCH_PARENT,
+	// RelativeLayout.LayoutParams.MATCH_PARENT));
+	// //
+	//
+	// viewGroup.setm
+	// viewGroup.setY((int) (height / 2f));
+	//
+	// }
 
 	private int determineAppropriateLayout() {
 		return determineAppropriateLayout(adapter);

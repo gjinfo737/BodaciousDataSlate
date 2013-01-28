@@ -8,15 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RadiusItemusPopulus_IconTitleSubTitle implements IRadiusItemusPopulus {
+public class RadiusItemusPopulus_IconTitleSubTitle implements
+		IRadiusItemusPopulus {
 
 	private int layoutId;
 	private int iconId;
 	private int titleId;
 	private int subTitleId;
 
-	public RadiusItemusPopulus_IconTitleSubTitle(int layoutId, int iconId, int titleId,
-			int subTitleId) {
+	public RadiusItemusPopulus_IconTitleSubTitle(int layoutId, int iconId,
+			int titleId, int subTitleId) {
 		this.layoutId = layoutId;
 		this.iconId = iconId;
 		this.titleId = titleId;
@@ -24,7 +25,7 @@ public class RadiusItemusPopulus_IconTitleSubTitle implements IRadiusItemusPopul
 	}
 
 	@Override
-	public void setViewForData(LayoutInflater inflater, ViewGroup view,
+	public ViewGroup setViewForData(LayoutInflater inflater, ViewGroup view,
 			Object data) {
 		view.removeAllViews();
 		ViewGroup layout = (ViewGroup) inflater.inflate(layoutId, null);
@@ -37,5 +38,6 @@ public class RadiusItemusPopulus_IconTitleSubTitle implements IRadiusItemusPopul
 		((TextView) layout.findViewById(titleId)).setText(data.toString());
 		((TextView) layout.findViewById(subTitleId)).setText("subtitle");
 		view.addView(layout);
+		return layout;
 	}
 }

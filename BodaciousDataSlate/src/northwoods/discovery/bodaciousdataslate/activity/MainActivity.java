@@ -53,6 +53,11 @@ public class MainActivity extends Activity {
 		int numberOfItems = 2;
 		setUpList(numberOfItems);
 		setupButtons();
+		CircleMaker.printCarts(5);
+		CircleMaker.printCarts(6);
+		CircleMaker.printCarts(7);
+		CircleMaker.printCarts(8);
+		CircleMaker.printCarts(9);
 	}
 
 	private void setupButtons() {
@@ -71,7 +76,7 @@ public class MainActivity extends Activity {
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < numberOfItems; i++)
 			list.add("~" + i);
-		bodaciousStringAdapter.setList(list, 0);
+		bodaciousStringAdapter.setList(list, 4);
 
 		radial.setAdapter(bodaciousStringAdapter);
 	}

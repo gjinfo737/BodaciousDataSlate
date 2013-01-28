@@ -16,21 +16,21 @@
             android:layout_centerInParent="true" >
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
-                android:id="@+id/bod_radius_item_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="150dp"
-                android:paddingBottom="100dp" >
-            </northwoods.discovery.bodaciousdataslate.BodaciousItem>
-
-            <northwoods.discovery.bodaciousdataslate.BodaciousItem
                 android:id="@+id/bod_radius_item_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="150dp"
-            >
+                android:layout_marginRight="200dp"
+                android:paddingBottom="200dp" >
+            </northwoods.discovery.bodaciousdataslate.BodaciousItem>
+
+            <northwoods.discovery.bodaciousdataslate.BodaciousItem
+                android:id="@+id/bod_radius_item_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="200dp"
+                android:paddingBottom="20dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
 
             <northwoods.discovery.bodaciousdataslate.BodaciousItem
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="50dp"
                 android:paddingTop="200dp" >
             </northwoods.discovery.bodaciousdataslate.BodaciousItem>
         </RelativeLayout>
