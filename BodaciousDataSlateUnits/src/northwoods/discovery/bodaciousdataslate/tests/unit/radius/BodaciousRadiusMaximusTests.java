@@ -1,9 +1,9 @@
 package northwoods.discovery.bodaciousdataslate.tests.unit.radius;
 
-import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_ITEM_BODACIOUS;
-import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_ITEM_CONTAINER_ID;
-import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_LAYOUTS;
-import static northwoods.discovery.bodaciousdataslate.MainActivity.RADIUS_LAYOUT_ITEM_IDS;
+import static northwoods.discovery.bodaciousdataslate.activity.MainActivity.RADIUS_ITEM_BODACIOUS;
+import static northwoods.discovery.bodaciousdataslate.activity.MainActivity.RADIUS_ITEM_CONTAINER_ID;
+import static northwoods.discovery.bodaciousdataslate.activity.MainActivity.RADIUS_LAYOUTS;
+import static northwoods.discovery.bodaciousdataslate.activity.MainActivity.RADIUS_LAYOUT_ITEM_IDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import northwoods.discovery.bodaciousdataslate.BodaciousAdapter;
