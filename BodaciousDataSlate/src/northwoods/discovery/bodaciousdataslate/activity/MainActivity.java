@@ -18,6 +18,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
+	private static final int THE_BODACIOUS_ONE = 0;
 	public static final int RADIUS_ITEM_BODACIOUS = id.bod_radius_item_bodacious;
 	public static final int RADIUS_SUB_LAYOUT_ID = id.sub_rellay;
 	public static final int RADIUS_ITEM_CONTAINER_ID = id.bod_radius_item_container;
@@ -53,17 +54,14 @@ public class MainActivity extends Activity {
 		int numberOfItems = 2;
 		setUpList(numberOfItems);
 		setupButtons();
-		CircleMaker.printCarts(5);
-		CircleMaker.printCarts(6);
-		CircleMaker.printCarts(7);
-		CircleMaker.printCarts(8);
-		CircleMaker.printCarts(9);
+		// CircleMaker.printCarts(4);
 	}
 
 	private void setupButtons() {
 		int[] btnIds = new int[] { id.button2, id.button3, id.button4,
-				id.button5, id.button6, id.button7, id.button8, id.button9 };
-		for (int i = 2; i < 10; i++) {
+				id.button5, id.button6, id.button7, id.button8, id.button9,
+				id.button10 };
+		for (int i = 2; i < 11; i++) {
 			((Button) findViewById(btnIds[i - 2]))
 					.setOnClickListener(new BodOnClickListener(i));
 		}
@@ -76,7 +74,7 @@ public class MainActivity extends Activity {
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < numberOfItems; i++)
 			list.add("~" + i);
-		bodaciousStringAdapter.setList(list, 4);
+		bodaciousStringAdapter.setList(list, THE_BODACIOUS_ONE);
 
 		radial.setAdapter(bodaciousStringAdapter);
 	}
