@@ -2,6 +2,7 @@ package northwoods.discovery.bodaciousdataslate;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -54,6 +55,7 @@ public class BodaciousItem extends RelativeLayout {
 		@Override
 		protected void onDraw(Canvas canvas) {
 			super.onDraw(canvas);
+			canvas.drawColor(Color.MAGENTA);
 		}
 
 	}

@@ -11,7 +11,10 @@ import northwoods.discovery.bodaciousdataslate.R.layout;
 import northwoods.discovery.bodaciousdataslate.RadiusItemusPopulus_IconTitleSubTitle;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -28,6 +31,7 @@ public class MainActivity extends Activity {
 			id.bod_radius_item_0, id.bod_radius_item_1, id.bod_radius_item_2,
 			id.bod_radius_item_3, id.bod_radius_item_4, id.bod_radius_item_5,
 			id.bod_radius_item_6, id.bod_radius_item_7, id.bod_radius_item_8, };
+	private BodaciousRadiusMaximus<String> radial;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +41,51 @@ public class MainActivity extends Activity {
 
 		// grid.setAdapter(bodStringAdapter);
 
-		BodaciousAdapter<String> bodaciousStringAdapter = new BodaciousAdapter<String>(
-				getApplicationContext());
-		List<String> list = new ArrayList<String>();
-		for (int i = 0; i < 4; i++)
-			list.add("~" + i);
-		bodaciousStringAdapter.setList(list, 0);
-
 		RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
-		BodaciousRadiusMaximus<String> radial = new BodaciousRadiusMaximus<String>(
-				RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
+		this.radial = new BodaciousRadiusMaximus<String>(RADIUS_LAYOUTS,
+				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
 				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
 				radiusItemPopulater);
 
-		radial.setAdapter(bodaciousStringAdapter);
+		int numberOfItems = 2;
+		setUpList(numberOfItems);
+		setupButtons();
+	}
 
+	private void setupButtons() {
+		int[] btnIds = new int[] { id.button2, id.button3, id.button4,
+				id.button5, id.button6, id.button7, id.button8, id.button9 };
+		for (int i = 2; i < 10; i++) {
+			((Button) findViewById(btnIds[i - 2]))
+					.setOnClickListener(new BodOnClickListener(i));
+		}
+
+	}
+
+	public void setUpList(int numberOfItems) {
+		BodaciousAdapter<String> bodaciousStringAdapter = new BodaciousAdapter<String>(
+				getApplicationContext());
+		List<String> list = new ArrayList<String>();
+		for (int i = 0; i < numberOfItems; i++)
+			list.add("~" + i);
+		bodaciousStringAdapter.setList(list, 0);
+
+		radial.setAdapter(bodaciousStringAdapter);
+	}
+
+	private class BodOnClickListener implements OnClickListener {
+		private int numberOfItems;
+
+		public BodOnClickListener(int numberOfItems) {
+			this.numberOfItems = numberOfItems;
+		}
+
+		@Override
+		public void onClick(View v) {
+			setUpList(numberOfItems);
+		}
 	}
 }
