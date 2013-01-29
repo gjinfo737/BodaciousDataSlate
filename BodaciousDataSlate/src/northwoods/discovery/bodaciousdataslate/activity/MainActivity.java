@@ -17,7 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	private static final int[] btnIds = new int[] { id.button2, id.button3,
+			id.button4, id.button5, id.button6, id.button7, id.button8,
+			id.button9, id.button10, id.button11, id.button12 };
 	private static final int THE_BODACIOUS_ONE = 0;
 	public static final int RADIUS_ITEM_BODACIOUS = id.bod_radius_item_bodacious;
 	public static final int RADIUS_SUB_LAYOUT_ID = id.sub_rellay;
@@ -45,7 +47,8 @@ public class MainActivity extends Activity {
 		RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
-		this.radial = new BodaciousRadiusMaximus<String>(RADIUS_LAYOUTS,
+		this.radial = new BodaciousRadiusMaximus<String>(
+				layout.bod_radius_default, RADIUS_LAYOUTS,
 				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
 				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
@@ -58,11 +61,10 @@ public class MainActivity extends Activity {
 	}
 
 	private void setupButtons() {
-		int[] btnIds = new int[] { id.button2, id.button3, id.button4,
-				id.button5, id.button6, id.button7, id.button8, id.button9,
-				id.button10 };
-		for (int i = 2; i < 11; i++) {
-			((Button) findViewById(btnIds[i - 2]))
+
+		int offset = 2;
+		for (int i = offset; i < btnIds.length + offset; i++) {
+			((Button) findViewById(btnIds[i - offset]))
 					.setOnClickListener(new BodOnClickListener(i));
 		}
 
