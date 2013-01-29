@@ -89,7 +89,7 @@ public class BodaciousRadiusMaximus<E> {
 	public int determineAppropriateLayout(
 			BodaciousAdapter<E> bodaciousStringAdapter) {
 		int index = calculateNumberOfItemsIndex(bodaciousStringAdapter);
-		if (index >= layouts.length || index < 0) {
+		if (index >= layouts.length) {
 			return layoutsDefault;
 		}
 		return layouts[index];
@@ -99,7 +99,7 @@ public class BodaciousRadiusMaximus<E> {
 			BodaciousAdapter<E> bodaciousStringAdapter) {
 		int indexWithBod = bodaciousStringAdapter.getCount() - 1;
 		int index = indexWithBod - 1;
-
+		index = index < 0 ? 0 : index;
 		return index;
 	}
 
