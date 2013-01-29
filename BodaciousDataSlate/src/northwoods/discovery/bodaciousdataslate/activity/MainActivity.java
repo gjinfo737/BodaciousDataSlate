@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 			id.bod_radius_item_3, id.bod_radius_item_4, id.bod_radius_item_5,
 			id.bod_radius_item_6, id.bod_radius_item_7, id.bod_radius_item_8, };
 	private BodaciousRadiusMaximus<String> radial;
+	private RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends Activity {
 
 		// grid.setAdapter(bodStringAdapter);
 
-		RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
+		radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
 		this.radial = new BodaciousRadiusMaximus<String>(
@@ -72,7 +73,7 @@ public class MainActivity extends Activity {
 
 	public void setUpList(int numberOfItems) {
 		BodaciousAdapter<String> bodaciousStringAdapter = new BodaciousAdapter<String>(
-				getApplicationContext());
+				radiusItemPopulater, getLayoutInflater());
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < numberOfItems; i++)
 			list.add("~" + i);

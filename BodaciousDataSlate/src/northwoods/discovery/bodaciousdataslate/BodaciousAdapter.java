@@ -3,20 +3,21 @@ package northwoods.discovery.bodaciousdataslate;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 public class BodaciousAdapter<E> extends BaseAdapter {
-
 	private List<E> dataList;
-	private Context context;
+	private IRadiusItemusPopulus radiusItemusPopulus;
+	private LayoutInflater inflater;
 
-	public BodaciousAdapter(Context context) {
+	public BodaciousAdapter(IRadiusItemusPopulus radiusItemusPopulus,
+			LayoutInflater inflater) {
 		this.dataList = new ArrayList<E>();
-		this.context = context;
+		this.radiusItemusPopulus = radiusItemusPopulus;
+		this.inflater = inflater;
 	}
 
 	@Override
@@ -36,9 +37,11 @@ public class BodaciousAdapter<E> extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		TextView textView = new TextView(context);
-		textView.setText("~~~" + getItem(position).toString());
-		return textView;
+		if (convertView == null)
+			return radiusItemusPopulus.setViewForData(inflater, null,
+					getItem(position));
+
+		return convertView;
 	}
 
 	public void setList(List<E> theFullDataList, int indexOfBodacious) {
