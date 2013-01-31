@@ -12,7 +12,7 @@ import northwoods.discovery.bodaciousdataslate.BodaciousRadiusMaximus;
 import northwoods.discovery.bodaciousdataslate.IRadiusItemusPopulus;
 import northwoods.discovery.bodaciousdataslate.R.id;
 import northwoods.discovery.bodaciousdataslate.R.layout;
-import northwoods.discovery.bodaciousdataslate.RadiusItemusPopulus_IconTitleSubTitle;
+import northwoods.discovery.bodaciousdataslate.activity.RadiusItemusPopulus_IconTitleSubTitle;
 import northwoods.discovery.bodaciousdataslate.tests.unit.BodaciousTestRunner;
 
 import org.junit.Before;

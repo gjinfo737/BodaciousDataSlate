@@ -8,7 +8,6 @@ import northwoods.discovery.bodaciousdataslate.BodaciousRadiusMaximus;
 import northwoods.discovery.bodaciousdataslate.R;
 import northwoods.discovery.bodaciousdataslate.R.id;
 import northwoods.discovery.bodaciousdataslate.R.layout;
-import northwoods.discovery.bodaciousdataslate.RadiusItemusPopulus_IconTitleSubTitle;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

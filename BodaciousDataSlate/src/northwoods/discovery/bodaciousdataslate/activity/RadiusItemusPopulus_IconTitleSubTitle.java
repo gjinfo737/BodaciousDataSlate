@@ -1,5 +1,6 @@
-package northwoods.discovery.bodaciousdataslate;
+package northwoods.discovery.bodaciousdataslate.activity;
 
+import northwoods.discovery.bodaciousdataslate.IRadiusItemusPopulus;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
