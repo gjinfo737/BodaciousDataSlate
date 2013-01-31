@@ -17,7 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-	private static final int BODACIOUS_LISTVIEW_ID = id.bodacious_listView;
+	public static final int BOD_RADIUS_DEFAULT_LAYOUT = layout.bod_radius_default;
+	public static final int BODACIOUS_LISTVIEW_ID = id.bodacious_listView;
 	private static final int[] btnIds = new int[] { id.button2, id.button3,
 			id.button4, id.button5, id.button6, id.button7, id.button8,
 			id.button9, id.button10, id.button11, id.button12 };
@@ -35,8 +36,8 @@ public class MainActivity extends Activity {
 			id.bod_radius_item_0, id.bod_radius_item_1, id.bod_radius_item_2,
 			id.bod_radius_item_3, id.bod_radius_item_4, id.bod_radius_item_5,
 			id.bod_radius_item_6, id.bod_radius_item_7, id.bod_radius_item_8, };
-	private BodaciousRadiusMaximus<String> radial;
-	private RadiusItemusPopulus_IconTitleSubTitle radiusItemPopulater;
+	private BodaciousRadiusMaximus<String> bodaciousRadiusMaximus;
+	private RadiusItemusPopulus_IconTitleSubTitle radiusItemusPopulus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +47,15 @@ public class MainActivity extends Activity {
 
 		// grid.setAdapter(bodStringAdapter);
 
-		radiusItemPopulater = new RadiusItemusPopulus_IconTitleSubTitle(
+		radiusItemusPopulus = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
-		this.radial = new BodaciousRadiusMaximus<String>(
-				layout.bod_radius_default, RADIUS_LAYOUTS,
-				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
+		this.bodaciousRadiusMaximus = new BodaciousRadiusMaximus<String>(
+				BOD_RADIUS_DEFAULT_LAYOUT, RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS,
+				getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
 				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
-				radiusItemPopulater, BODACIOUS_LISTVIEW_ID);
+				radiusItemusPopulus, BODACIOUS_LISTVIEW_ID);
 
 		int numberOfItems = 2;
 		setUpList(numberOfItems);
@@ -74,13 +75,13 @@ public class MainActivity extends Activity {
 
 	public void setUpList(int numberOfItems) {
 		BodaciousAdapter<String> bodaciousStringAdapter = new BodaciousAdapter<String>(
-				radiusItemPopulater, getLayoutInflater());
+				radiusItemusPopulus, getLayoutInflater());
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < numberOfItems; i++)
 			list.add("~" + i);
 		bodaciousStringAdapter.setList(list, THE_BODACIOUS_ONE);
 
-		radial.setAdapter(bodaciousStringAdapter);
+		bodaciousRadiusMaximus.setAdapter(bodaciousStringAdapter);
 	}
 
 	private class BodOnClickListener implements OnClickListener {

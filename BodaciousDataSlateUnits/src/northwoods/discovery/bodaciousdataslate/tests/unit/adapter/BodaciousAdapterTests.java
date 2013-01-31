@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import northwoods.discovery.bodaciousdataslate.BodaciousAdapter;
+import northwoods.discovery.bodaciousdataslate.IRadiusItemusPopulus;
+import northwoods.discovery.bodaciousdataslate.R.id;
+import northwoods.discovery.bodaciousdataslate.R.layout;
+import northwoods.discovery.bodaciousdataslate.RadiusItemusPopulus_IconTitleSubTitle;
 import northwoods.discovery.bodaciousdataslate.tests.unit.BodaciousTestRunner;
 
 import org.junit.Before;
@@ -26,7 +30,11 @@ public class BodaciousAdapterTests {
 	@Before
 	public void setUp() {
 		activity = new Activity();
-		this.bodaciousAdapter = new BodaciousAdapter<String>(activity);
+		IRadiusItemusPopulus radiusItemusPopulus = new RadiusItemusPopulus_IconTitleSubTitle(
+				layout.item_layout, id.item_imageView, id.item_textView_title,
+				id.item_textView_subTitle);
+		this.bodaciousAdapter = new BodaciousAdapter<String>(
+				radiusItemusPopulus, activity.getLayoutInflater());
 	}
 
 	@Test
