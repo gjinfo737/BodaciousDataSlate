@@ -23,6 +23,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations.Mock;
 
 import android.app.Activity;
+import android.view.View;
 import android.view.ViewGroup;
 
 @RunWith(BodaciousTestRunner.class)
@@ -41,10 +42,6 @@ public class BodaciousRadiusMaximusTests {
 		IRadiusItemusPopulus radiusItemusPopulus = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
-		// this.bodaciousRadiusMaximus = new BodaciousRadiusMaximus<String>(
-		// RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS,
-		// activity.getLayoutInflater(), mainLayout,
-		// RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS, null);
 		this.bodaciousRadiusMaximus = new BodaciousRadiusMaximus<String>(
 				BOD_RADIUS_DEFAULT_LAYOUT, RADIUS_LAYOUTS,
 				RADIUS_LAYOUT_ITEM_IDS, activity.getLayoutInflater(),
@@ -94,6 +91,39 @@ public class BodaciousRadiusMaximusTests {
 				bodaciousRadiusMaximus
 						.determineAppropriateLayout(bodaciousStringAdapter),
 				is(RADIUS_LAYOUTS[0]));
+	}
+
+	@Test
+	public void itDeterminesTheCorrectVisibilityForBodacious_Default() {
+		setupTheAdapter(0);
+
+		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
+				is(View.VISIBLE));
+	}
+
+	@Test
+	public void itDeterminesTheCorrectVisibilityForBodacious_Hide() {
+		setupTheAdapter(0);
+		bodaciousRadiusMaximus.hideBodacious();
+		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
+				is(View.GONE));
+	}
+
+	@Test
+	public void itDeterminesTheCorrectVisibilityForBodacious_Show() {
+		setupTheAdapter(0);
+		bodaciousRadiusMaximus.ShowBodacious();
+		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
+				is(View.VISIBLE));
+	}
+
+	@Test
+	public void itDeterminesTheCorrectVisibilityForBodacious_HideAndShow() {
+		setupTheAdapter(0);
+		bodaciousRadiusMaximus.hideBodacious();
+		bodaciousRadiusMaximus.ShowBodacious();
+		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
+				is(View.VISIBLE));
 	}
 
 	private void setupTheAdapter(Integer count) {

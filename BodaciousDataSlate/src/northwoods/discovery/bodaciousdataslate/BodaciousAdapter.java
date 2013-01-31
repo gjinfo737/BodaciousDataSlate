@@ -12,6 +12,7 @@ public class BodaciousAdapter<E> extends BaseAdapter {
 	private List<E> dataList;
 	private IRadiusItemusPopulus radiusItemusPopulus;
 	private LayoutInflater inflater;
+	private BodaciousRadiusMaximus<E> radiusMaximus;
 
 	public BodaciousAdapter(IRadiusItemusPopulus radiusItemusPopulus,
 			LayoutInflater inflater) {
@@ -39,9 +40,19 @@ public class BodaciousAdapter<E> extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null)
 			return radiusItemusPopulus.setViewForData(inflater, null,
-					getItem(position));
+					getItem(position), position == getBodaciousPosition(),
+					radiusMaximus.determineBodaciousVisibility());
 
 		return convertView;
+	}
+
+	public int getBodaciousPosition() {
+		return getCount() - 1;
+	}
+
+	public void setBodaciousRadiusMaximus(
+			BodaciousRadiusMaximus<E> radiusMaximus) {
+		this.radiusMaximus = radiusMaximus;
 	}
 
 	public void setList(List<E> theFullDataList, int indexOfBodacious) {

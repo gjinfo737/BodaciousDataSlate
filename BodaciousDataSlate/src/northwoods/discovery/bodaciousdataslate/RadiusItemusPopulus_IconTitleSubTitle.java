@@ -25,8 +25,14 @@ public class RadiusItemusPopulus_IconTitleSubTitle implements
 	}
 
 	@Override
+	public ViewGroup setViewForRegularData(LayoutInflater inflater,
+			ViewGroup view, Object data) {
+		return setViewForData(inflater, view, data, false, View.VISIBLE);
+	}
+
+	@Override
 	public ViewGroup setViewForData(LayoutInflater inflater, ViewGroup view,
-			Object data) {
+			Object data, boolean isBodacious, int bodaciousVisibility) {
 		if (view != null)
 			view.removeAllViews();
 		ViewGroup layout = (ViewGroup) inflater.inflate(layoutId, null);
@@ -40,6 +46,9 @@ public class RadiusItemusPopulus_IconTitleSubTitle implements
 		((TextView) layout.findViewById(subTitleId)).setText("subtitle");
 		if (view != null)
 			view.addView(layout);
+
+		if (isBodacious)
+			layout.setVisibility(bodaciousVisibility);
 		return layout;
 	}
 }
