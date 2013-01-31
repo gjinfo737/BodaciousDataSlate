@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 @RunWith(BodaciousTestRunner.class)
 public class BodaciousRadiusMaximusTests {
 
+	private static final int COUNT = 10;
 	private Activity activity;
 	private BodaciousRadiusMaximus<String> bodaciousRadiusMaximus;
 	@Mock
@@ -104,6 +105,7 @@ public class BodaciousRadiusMaximusTests {
 	@Test
 	public void itDeterminesTheCorrectVisibilityForBodacious_Hide() {
 		setupTheAdapter(0);
+		bodaciousRadiusMaximus.setAdapter(bodaciousStringAdapter);
 		bodaciousRadiusMaximus.hideBodacious();
 		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
 				is(View.GONE));
@@ -112,6 +114,7 @@ public class BodaciousRadiusMaximusTests {
 	@Test
 	public void itDeterminesTheCorrectVisibilityForBodacious_Show() {
 		setupTheAdapter(0);
+		bodaciousRadiusMaximus.setAdapter(bodaciousStringAdapter);
 		bodaciousRadiusMaximus.ShowBodacious();
 		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
 				is(View.VISIBLE));
@@ -120,6 +123,7 @@ public class BodaciousRadiusMaximusTests {
 	@Test
 	public void itDeterminesTheCorrectVisibilityForBodacious_HideAndShow() {
 		setupTheAdapter(0);
+		bodaciousRadiusMaximus.setAdapter(bodaciousStringAdapter);
 		bodaciousRadiusMaximus.hideBodacious();
 		bodaciousRadiusMaximus.ShowBodacious();
 		assertThat(bodaciousRadiusMaximus.determineBodaciousVisibility(),
