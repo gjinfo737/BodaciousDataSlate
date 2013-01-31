@@ -116,10 +116,12 @@ public class BodaciousRadiusMaximus<E> {
 
 	public void hideBodacious() {
 		bodaciousVisibility = View.GONE;
+		updateView();
 	}
 
 	public void ShowBodacious() {
 		bodaciousVisibility = View.VISIBLE;
+		updateView();
 	}
 
 }

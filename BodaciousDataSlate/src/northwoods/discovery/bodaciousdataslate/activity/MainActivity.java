@@ -38,21 +38,19 @@ public class MainActivity extends Activity {
 			id.bod_radius_item_6, id.bod_radius_item_7, id.bod_radius_item_8, };
 	private BodaciousRadiusMaximus<String> bodaciousRadiusMaximus;
 	private RadiusItemusPopulus_IconTitleSubTitle radiusItemusPopulus;
+	private boolean bodaciousIsShown = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		// GridView grid = (GridView) findViewById(id.gridView1);
-
-		// grid.setAdapter(bodStringAdapter);
 
 		radiusItemusPopulus = new RadiusItemusPopulus_IconTitleSubTitle(
 				layout.item_layout, id.item_imageView, id.item_textView_title,
 				id.item_textView_subTitle);
 		this.bodaciousRadiusMaximus = new BodaciousRadiusMaximus<String>(
-				BOD_RADIUS_DEFAULT_LAYOUT, RADIUS_LAYOUTS, RADIUS_LAYOUT_ITEM_IDS,
-				getLayoutInflater(),
+				BOD_RADIUS_DEFAULT_LAYOUT, RADIUS_LAYOUTS,
+				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
 				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
 				radiusItemusPopulus, BODACIOUS_LISTVIEW_ID);
@@ -60,7 +58,6 @@ public class MainActivity extends Activity {
 		int numberOfItems = 2;
 		setUpList(numberOfItems);
 		setupButtons();
-		// CircleMaker.printCarts(4);
 	}
 
 	private void setupButtons() {
@@ -70,6 +67,14 @@ public class MainActivity extends Activity {
 			((Button) findViewById(btnIds[i - offset]))
 					.setOnClickListener(new BodOnClickListener(i));
 		}
+
+		((Button) findViewById(id.button_toggle_bodacious))
+				.setOnClickListener(new OnClickListener() {
+					public void onClick(View v) {
+						toggleBodaciousVisibility();
+					}
+
+				});
 
 	}
 
@@ -95,5 +100,14 @@ public class MainActivity extends Activity {
 		public void onClick(View v) {
 			setUpList(numberOfItems);
 		}
+	}
+
+	private void toggleBodaciousVisibility() {
+		if (bodaciousIsShown)
+			bodaciousRadiusMaximus.hideBodacious();
+		else
+			bodaciousRadiusMaximus.ShowBodacious();
+
+		bodaciousIsShown = !bodaciousIsShown;
 	}
 }
