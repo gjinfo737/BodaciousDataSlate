@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
+	private static final int BODACIOUS_LISTVIEW_ID = id.bodacious_listView;
 	private static final int[] btnIds = new int[] { id.button2, id.button3,
 			id.button4, id.button5, id.button6, id.button7, id.button8,
 			id.button9, id.button10, id.button11, id.button12 };
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
 				RADIUS_LAYOUT_ITEM_IDS, getLayoutInflater(),
 				(ViewGroup) findViewById(RADIUS_SUB_LAYOUT_ID),
 				RADIUS_ITEM_CONTAINER_ID, RADIUS_ITEM_BODACIOUS,
-				radiusItemPopulater);
+				radiusItemPopulater, BODACIOUS_LISTVIEW_ID);
 
 		int numberOfItems = 2;
 		setUpList(numberOfItems);

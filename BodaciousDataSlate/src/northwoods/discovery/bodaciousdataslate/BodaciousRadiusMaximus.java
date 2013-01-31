@@ -1,6 +1,5 @@
 package northwoods.discovery.bodaciousdataslate;
 
-import northwoods.discovery.bodaciousdataslate.R.id;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -18,11 +17,13 @@ public class BodaciousRadiusMaximus<E> {
 	private int currentLayout;
 	private int itemContainerLayoutId;
 	private IRadiusItemusPopulus radiusItemusPopulus;
+	private int listViewResourceId;
 
 	public BodaciousRadiusMaximus(int layoutsDefault, int[] layouts,
 			int[] layoutsItemIds, LayoutInflater layoutInflater,
 			ViewGroup mainLayout, int itemContainerLayoutId,
-			int bodaciousItemId, IRadiusItemusPopulus radiusItemusPopulus) {
+			int bodaciousItemId, IRadiusItemusPopulus radiusItemusPopulus,
+			int listViewResourceId) {
 		this.layoutsDefault = layoutsDefault;
 		this.layouts = layouts;
 		this.layoutsItemIds = layoutsItemIds;
@@ -32,6 +33,7 @@ public class BodaciousRadiusMaximus<E> {
 		this.itemContainerLayoutId = itemContainerLayoutId;
 		this.radiusItemusPopulus = radiusItemusPopulus;
 		this.bodaciousItemId = bodaciousItemId;
+		this.listViewResourceId = listViewResourceId;
 		//
 		this.currentLayout = this.layouts[0];
 	}
@@ -56,7 +58,7 @@ public class BodaciousRadiusMaximus<E> {
 		mainLayout.addView(subLayout);
 		if (currentLayout == layoutsDefault) {
 			AbsListView listview = (AbsListView) subLayout
-					.findViewById(id.bodacious_listView);
+					.findViewById(listViewResourceId);
 			listview.setAdapter(adapter);
 		} else {
 			populateItems();
